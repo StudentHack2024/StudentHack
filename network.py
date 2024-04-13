@@ -5,13 +5,10 @@ import pandas as pd
 from PIL import Image
 
 def load_image(image_path):
-<<<<<<< Updated upstream
-    img = Image.open(image_path)
+    img = Image.open("./images/" + image_path)
     img = img.resize((69, 69))
+    img = img.convert('L')
     return np.array(img)
-=======
-    return np.array(Image.open("./images/" + image_path))
->>>>>>> Stashed changes
 
 
 # Read in data
@@ -35,7 +32,7 @@ model.add(tf.keras.layers.Dense(3, activation=tf.nn.softmax))
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=3)
+model.fit(x_train, y_train, epochs=6)
 
 model.save('galaxies.model')
 

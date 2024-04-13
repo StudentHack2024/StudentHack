@@ -14,7 +14,7 @@ images = []
 classifications = []
 
 
-for filename in os.listdir("./images_gz2/images/"):
+for filename in os.listdir("./images/"):
     entry = mapped[mapped["asset_id"] == int(filename[:-4])]
     if len(entry) > 0:
         images.append(filename)
@@ -25,11 +25,11 @@ for filename in os.listdir("./images_gz2/images/"):
                 new_class += char 
 
         if new_class == "E":
-            classification = "Eliptical"
+            classification = 0
         elif new_class == "SB":
-            classification = "Spiral"
+            classification = 1
         else:
-            classification = "Barred Spiral"
+            classification = 2
         classifications.append(classification)
 
 results = pd.DataFrame(classifications, images).reset_index()
