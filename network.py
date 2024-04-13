@@ -5,7 +5,9 @@ import pandas as pd
 from PIL import Image
 
 def load_image(image_path):
-    return np.array(Image.open(image_path))
+    img = Image.open(image_path)
+    img = img.resize((69, 69))
+    return np.array(img)
 
 
 # Read in data
@@ -32,3 +34,6 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 model.fit(x_train, y_train, epochs=3)
 
 model.save('galaxies.model')
+
+loss, acc = model.evaluate(x_test, y_test)
+print(f'Loss: {loss}, Accuracy: {acc}')
