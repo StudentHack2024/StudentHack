@@ -5,9 +5,13 @@ import pandas as pd
 from PIL import Image
 
 def load_image(image_path):
+<<<<<<< Updated upstream
     img = Image.open(image_path)
     img = img.resize((69, 69))
     return np.array(img)
+=======
+    return np.array(Image.open("./images/" + image_path))
+>>>>>>> Stashed changes
 
 
 # Read in data
