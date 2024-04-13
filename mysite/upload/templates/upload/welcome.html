@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+
+    <style>
+       .canvas-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            transition: ease-in-out 0.1s;
+        }
+        
+        .text-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            top: 10%;
+            height: 80%;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            z-index: 2;
+            transition: ease-in-out 0.5s;
+        }
+
+        .scroll-area{
+            height: 500vh;
+        }
+
+        .more-content{
+        position: relative;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1rem;
+        text-align: center;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
+        height: 100vh;
+        padding: 0 10% 0 10%;
+        z-index: 3;
+        } 
+    </style>
+
+
+</head>
+<body>
+    <div class="text-container">
+        <h1>Scrolling Animation</h1>
+        <p>Scroll down to see the magic!</p>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="scroll-area">
+    </div>
+
+    <div class="more-content">
+        <h3>You have scrolled!</h3>
+    </div>
+
+{% load static %}
+<script type="module" src="{% static 'script.js' %}"></script>
+</script>
+</body>
+</html>
+
