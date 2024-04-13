@@ -96,6 +96,8 @@ window.addEventListener('wheel', function(event) {
 
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
+    } else if (object.scale.x - scaleChange > 150 && object.scale.y - scaleChange > 150 && object.scale.z - scaleChange > 150){
+        object.scale.set(150,150,150);
     } else if (object.scale.x >= 0 && object.scale.y >= 0 && object.scale.z >= 0){
         object.scale.set(
             object.scale.x - scaleChange,
