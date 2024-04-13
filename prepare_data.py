@@ -1,11 +1,6 @@
 import pandas as pd
 
-import random
-
 import os
-
-from matplotlib import pyplot as plt
-from matplotlib import image as mpimg
 
 mapping = pd.read_csv("gz2_filename_mapping.csv")
 df = pd.read_csv("gz2_hart16.csv")
