@@ -7,15 +7,15 @@ import os
 model = tf.keras.models.load_model('galaxies.model')
 
 img = cv2.imread('galaxy.jpg')[:,:,0]
-img = cv2.resize(img, (69,69))
+img = cv2.resize(img, (70,70))
 img = np.array([img])
 prediction = np.argmax(model.predict(img))
 
-if prediction == 'Elliptical':
+if prediction == 0:
     print('This is an Elliptical galaxy')
-elif prediction == 'Spiral':
+elif prediction == 2:
     print('This is a Spiral galaxy')
-elif prediction == 'Irregular':
-    print('This is an Irregular galaxy')
+elif prediction ==  1:
+    print('This is an Barred Spiral galaxy')
 else:
     print("Hmmm")
