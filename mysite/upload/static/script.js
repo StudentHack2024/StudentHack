@@ -46,7 +46,7 @@ loader.load(
 );
 
 //Instantiate a new renderer and set its size
-const renderer = new THREE.WebGLRenderer({ alpha: true });
+const renderer = new THREE.WebGLRenderer({ alpha: false });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 //Add the renderer to the DOM
@@ -92,10 +92,20 @@ window.addEventListener('wheel', function(event) {
     }
 
     // Update the scale of the object based on the scroll delta
-    let scaleChange = event.deltaY * -0.1; // You can adjust the multiplier to get the desired speed
+    let scaleChange = event.deltaY * 0.1; // You can adjust the multiplier to get the desired speed
 
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
+        var element = document.getElementById("form-total");
+        console.log("opacity")
+        console.log(element.style.opacity)
+        if ((parseFloat(element.style.opacity) + 0.01) < 1.0){
+            element.style.opacity = parseFloat(element.style.opacity) + 0.01;
+        }
+        var currentTranslateY = parseFloat(element.style.transform.replace('translateY(', '').replace('px)', ''));
+        if (currentTranslateY - 5 >= 0){
+            element.style.transform = "translateY(" + (currentTranslateY - 5) + "px)"
+        }
     } else if (object.scale.x - scaleChange > 150 && object.scale.y - scaleChange > 150 && object.scale.z - scaleChange > 150){
         object.scale.set(150,150,150);
     } else if (object.scale.x >= 0 && object.scale.y >= 0 && object.scale.z >= 0){
