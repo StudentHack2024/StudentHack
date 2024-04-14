@@ -36,12 +36,15 @@
             <h1 style="opacity: 1; font-family: 'Space Grotesk', sans-serif; font-size: 40px;">
                 <small class="text-secondary">StudentHack2024</small>
             </h1>
-            <form method = "POST" enctype = "multipart/form-data" class  = "input_form">
+            <form method="POST" enctype="multipart/form-data" class="input_form">
                 {% csrf_token %}
                 <div class="form-group" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
                     <div class="form-content mb-3" style="color: black">
-                        <!-- <label for="image_input">{{form.image.label}}</h4> -->
-                        <div>{{ form.image }}</div>
+                        <input id="file-upload" type="file"  accept="image/*" style="display:none;" name="{{ form.image.name }}">
+                        <label for="file-upload" class="btn btn-secondary">
+                            Choose File
+                        </label>
+                        <div id="file-name">No file chosen</div>
                     </div>
                     <button type="submit" class="btn btn-dark" style="padding: 10px; font-size: 40px; width: 200px;">Classify</button>
                 </div>

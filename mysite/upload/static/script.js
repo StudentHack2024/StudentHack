@@ -136,6 +136,10 @@ window.addEventListener('wheel', function(event) {
     }
   });
 
+document.getElementById('file-upload').addEventListener('change', function() {
+  document.getElementById('file-name').textContent = this.files[0].name;
+});
+
 //add mouse position listener, so we can make the eye move
 document.onmousemove = (e) => {
   mouseX = e.clientX;
