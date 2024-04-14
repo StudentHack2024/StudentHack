@@ -85,6 +85,15 @@ window.addEventListener("resize", function () {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+let ambientSpin = setInterval(smallSpin, 20);
+
+function smallSpin(){
+  if (object){
+    object.rotation.y += 0.001;
+  }
+
+}
+
 // Add an event listener for the scroll event
 window.addEventListener('wheel', function(event) {
     // Check if the object is loaded
@@ -97,11 +106,13 @@ window.addEventListener('wheel', function(event) {
     let scaleChange = event.deltaY * 0.1; // You can adjust the multiplier to get the desired speed
 
     var element = document.getElementById("form-total");
+    var arrowContainer = document.getElementById("arrow-container");
     var background = document.getElementById("background-img");
-
 
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
+        clearInterval(ambientSpin);
+
         if ((parseFloat(element.style.opacity) + 0.01) < 1){
             element.style.opacity = parseFloat(element.style.opacity) + 0.02;
         } else {
@@ -113,6 +124,7 @@ window.addEventListener('wheel', function(event) {
         var currentTranslateY = parseFloat(element.style.transform.replace('translateY(', '').replace('px)', ''));
         if (currentTranslateY - 5 >= -100){
             element.style.transform = "translateY(" + (currentTranslateY - 10) + "px)"
+
         }
     } else if (object.scale.x - scaleChange > 150 && object.scale.y - scaleChange > 150 && object.scale.z - scaleChange > 150){
         object.scale.set(150,150,150);

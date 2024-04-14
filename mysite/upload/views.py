@@ -13,7 +13,7 @@ def index(request):
             img_str = img_str.decode("utf-8")
             return render(request, "upload/classified_page.html", {"prediction": prediction, "image_b64": img_str})
         else:
-            return HttpResponse("Form is not valid")
+            return render(request, "upload/oops.html")
     else:
         form  = image_input_form()
     return render(request, "upload/index.html", {"form": form})
