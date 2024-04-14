@@ -5,15 +5,15 @@ import pandas as pd
 import random
 
 def load_image(image_path):
-    img = image.load_img("./images/" + image_path, target_size=(100, 100), color_mode='grayscale')
+    img = image.load_img("./images/" + image_path, target_size=(69, 69), color_mode='grayscale')
     img = img.rotate(random.randint(-180, 180))
     img = np.asarray(img)
     return img
 
 
 # Read in data
-test_data = pd.read_csv('test_data.csv', nrows=100000)
-train_data = pd.read_csv('train_data.csv', nrows=80000)
+test_data = pd.read_csv('test_data.csv', nrows=80000)
+train_data = pd.read_csv('train_data.csv', nrows=50000)
 
 # Split data into x and y
 x_train, y_train = np.array([load_image(img) for img in train_data['Image']]), np.array(train_data['Classification'])
@@ -34,7 +34,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 
 model.fit(x_train, y_train, epochs=11)
 
-model.save('galaxies.keras')
+model.save_weights('galaxies.weights.h5')
 
 loss, acc = model.evaluate(x_test, y_test)
 print(f'Loss: {loss}, Accuracy: {acc}')
