@@ -97,14 +97,19 @@ window.addEventListener('wheel', function(event) {
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
         var element = document.getElementById("form-total");
+        var background = document.getElementById("background-img");
         console.log("opacity")
         console.log(element.style.opacity)
         if ((parseFloat(element.style.opacity) + 0.01) < 1.0){
-            element.style.opacity = parseFloat(element.style.opacity) + 0.01;
+            element.style.opacity = parseFloat(element.style.opacity) + 0.02;
+            background.style.opacity = parseFloat(background.style.opacity) + 0.02;
+        } else {
+            console.log("oooooo")
         }
         var currentTranslateY = parseFloat(element.style.transform.replace('translateY(', '').replace('px)', ''));
-        if (currentTranslateY - 5 >= 0){
-            element.style.transform = "translateY(" + (currentTranslateY - 5) + "px)"
+        if (currentTranslateY - 10 >= 0){
+            element.style.transform = "translateY(" + (currentTranslateY - 10) + "px)"
+            document.getElementById("background-image").style.transform = "none"
         }
     } else if (object.scale.x - scaleChange > 150 && object.scale.y - scaleChange > 150 && object.scale.z - scaleChange > 150){
         object.scale.set(150,150,150);

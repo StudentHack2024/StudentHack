@@ -6,8 +6,8 @@ def index(request):
     if request.method == "POST":
         form = image_input_form(request.POST, request.FILES)
         if form.is_valid():
-            prediction = classify_img(request.FILES['image'])
-            return HttpResponse("The galaxy is of type: " + str(prediction))
+            # prediction = classify_img(request.FILES['image'])
+            return HttpResponse("The galaxy is of type: ")
         else:
             return HttpResponse("Form is not valid")
     else:
