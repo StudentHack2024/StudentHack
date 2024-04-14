@@ -108,6 +108,7 @@ window.addEventListener('wheel', function(event) {
     var element = document.getElementById("form-total");
     var arrowContainer = document.getElementById("arrow-container");
     var background = document.getElementById("background-img");
+    var socials = document.getElementById("social-footer");
 
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
@@ -115,6 +116,8 @@ window.addEventListener('wheel', function(event) {
 
         if ((parseFloat(element.style.opacity) + 0.01) < 1){
             element.style.opacity = parseFloat(element.style.opacity) + 0.02;
+            socials.style.opacity = parseFloat(socials.style.opacity) + 0.02;
+
         } else {
             background.style.opacity = parseFloat(background.style.opacity) + 0.02;
         }
@@ -139,6 +142,7 @@ window.addEventListener('wheel', function(event) {
           var currentTranslateY = parseFloat(element.style.transform.replace('translateY(', '').replace('px)', ''));
           if (currentTranslateY - 5 >= -150){
               element.style.opacity = parseFloat(element.style.opacity) + 0.01;
+              socials.style.opacity = parseFloat(socials.style.opacity) + 0.01;
               element.style.transform = "translateY(" + (currentTranslateY - 3) + "px)"
           }
         }
