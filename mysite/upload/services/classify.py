@@ -6,12 +6,16 @@ from django.templatetags.static import static
 
 def classify_img(image):
     url = "upload" + static('galaxies.weights.h5')
-    print(url)
+
     model = tf.keras.models.Sequential()
-    model.add(tf.keras.layers.Flatten(input_shape=(100, 100)))
-    model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
-    model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
-    model.add(tf.keras.layers.Dense(3, activation=tf.nn.softmax))
+    model.add(tf.keras.layers.Conv2D(32, (3,3), activation = 'relu', input_shape = (50,50,1)))
+    model.add(tf.keras.layers.MaxPooling2D((2,2)))
+    model.add(tf.keras.layers.Conv2D(64, (3,3), activation = 'relu'))
+    model.add(tf.keras.layers.MaxPooling2D((2,2)))
+    model.add(tf.keras.layers.Conv2D(64, (3,3), activation = 'relu'))
+    model.add(tf.keras.layers.Flatten())
+    model.add(tf.keras.layers.Dense(64, activation="relu"))
+    model.add(tf.keras.layers.Dense(3, activation="softmax"))
     model.load_weights(url)
     file = image.file
     img = cv2.imdecode(np.frombuffer(file.read(), np.uint8), 1)
