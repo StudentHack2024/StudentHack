@@ -94,22 +94,27 @@ window.addEventListener('wheel', function(event) {
     // Update the scale of the object based on the scroll delta
     let scaleChange = event.deltaY * 0.1; // You can adjust the multiplier to get the desired speed
 
+    var element = document.getElementById("form-total");
+    var background = document.getElementById("background-img");
+
+
+    console.log("scale")
+    console.log(object.scale.x)
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
-        var element = document.getElementById("form-total");
-        var background = document.getElementById("background-img");
         console.log("opacity")
         console.log(element.style.opacity)
-        if ((parseFloat(element.style.opacity) + 0.01) < 1.0){
+        if ((parseFloat(element.style.opacity) + 0.01) < 1){
             element.style.opacity = parseFloat(element.style.opacity) + 0.02;
-            background.style.opacity = parseFloat(background.style.opacity) + 0.02;
         } else {
-            console.log("oooooo")
+            background.style.opacity = parseFloat(background.style.opacity) + 0.02;
         }
+        if ((parseFloat(background.style.opacity) + 0.01) < 0.8){
+          background.style.opacity = parseFloat(background.style.opacity) + 0.02;
+      }
         var currentTranslateY = parseFloat(element.style.transform.replace('translateY(', '').replace('px)', ''));
-        if (currentTranslateY - 10 >= 0){
+        if (currentTranslateY - 5 >= -100){
             element.style.transform = "translateY(" + (currentTranslateY - 10) + "px)"
-            document.getElementById("background-image").style.transform = "none"
         }
     } else if (object.scale.x - scaleChange > 150 && object.scale.y - scaleChange > 150 && object.scale.z - scaleChange > 150){
         object.scale.set(150,150,150);
@@ -119,6 +124,15 @@ window.addEventListener('wheel', function(event) {
             object.scale.y - scaleChange,
             object.scale.z - scaleChange
         );
+      if (object.scale.x - scaleChange < 100 && object.scale.y - scaleChange < 100 && object.scale.z - scaleChange < 100){
+        if ((parseFloat(element.style.opacity) + 0.01) < 1){
+          var currentTranslateY = parseFloat(element.style.transform.replace('translateY(', '').replace('px)', ''));
+          if (currentTranslateY - 5 >= -150){
+              element.style.opacity = parseFloat(element.style.opacity) + 0.01;
+              element.style.transform = "translateY(" + (currentTranslateY - 3) + "px)"
+          }
+        }
+      }
     }
   });
 
