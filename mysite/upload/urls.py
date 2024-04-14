@@ -10,5 +10,3 @@ from django.views.static import serve
 urlpatterns = [path("", views.index, name = "index")]
 
 urlpatterns += staticfiles_urlpatterns()
-
-# urlpatterns += [re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_URL})]

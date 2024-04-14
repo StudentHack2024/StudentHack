@@ -1,8 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Classified Page</title>
     </head>
     <body>
+        {{image}}
+        <img width=400 height=400 src="data:image/png;base64,{{image_b64}}">
         <h1>Your galaxy was</h1>
         {% if prediction == 0 %}
             <h2>Elliptical</h2>

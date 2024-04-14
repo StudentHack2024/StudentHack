@@ -4,9 +4,6 @@ import tensorflow as tf
 import os
 from django.templatetags.static import static
 
-
-# url = os.path.join(settings.BASE_DIR, '/galaxies.keras')
-
 def classify_img(image):
     url = "upload" + static('galaxies.weights.h5')
     print(url)
