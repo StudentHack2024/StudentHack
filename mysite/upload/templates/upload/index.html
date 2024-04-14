@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <style>
         #container3D canvas {
             width: 100vw !important;
@@ -29,27 +30,27 @@
 
         <div style="clear: both;"></div>
         <img id="background-img" src="{% static 'images/background.jpg'%}" alt="Starry background" style="opacity: 0; position: absolute; left: 0; top: 0; width: 100vw; background-repeat: repeat-y;">
-        <div id="form-total" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: -1.2; transform: translateY(600px); box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px, rgba(255, 255, 255, 0.3) 0px 2px 4px, rgba(255, 255, 255, 0.3) 0px 4px 8px, rgba(255, 255, 255, 0.3) 0px 8px 16px, rgba(255, 255, 255, 0.3) 0px 16px 32px, rgba(255, 255, 255, 0.3) 0px 32px 64px; background-color: #ffffff; min-width: 300px; max-height: 500px; min-height: 300px; border-radius: 10px; padding: 30px">
-            <h1 style="opacity: 1; font-family: 'Space Grotesk', sans-serif; font-size: 70px; color: rgba(0, 0, 0, 1); white-space: nowrap;">
-                Galaxy Classifier
-            </h1>
-            <h1 style="opacity: 1; font-family: 'Space Grotesk', sans-serif; font-size: 40px;">
-                <small class="text-secondary">StudentHack2024</small>
-            </h1>
-            <form method="POST" enctype="multipart/form-data" class="input_form">
-                {% csrf_token %}
-                <div class="form-group" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
-                    <div class="form-content mb-3" style="color: black">
-                        <input id="file-upload" type="file"  accept="image/*" style="display:none;" name="{{ form.image.name }}">
-                        <label for="file-upload" class="btn btn-secondary">
-                            Choose File
-                        </label>
-                        <div id="file-name">No file chosen</div>
+            <div id="form-total" style="display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: -1.2; transform: translateY(600px); box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px, rgba(255, 255, 255, 0.3) 0px 2px 4px, rgba(255, 255, 255, 0.3) 0px 4px 8px, rgba(255, 255, 255, 0.3) 0px 8px 16px, rgba(255, 255, 255, 0.3) 0px 16px 32px, rgba(255, 255, 255, 0.3) 0px 32px 64px; background-color: #ffffff; min-width: 300px; max-height: 500px; min-height: 300px; border-radius: 10px; padding: 30px">
+                <h1 style="opacity: 1; font-family: 'Space Grotesk', sans-serif; font-size: 70px; color: rgba(0, 0, 0, 1); white-space: nowrap;">
+                    Galaxy Classifier
+                </h1>
+                <h1 style="opacity: 1; font-family: 'Space Grotesk', sans-serif; font-size: 40px;">
+                    <small class="text-secondary">StudentHack2024</small>
+                </h1>
+                <form method="POST" enctype="multipart/form-data" class="input_form">
+                    {% csrf_token %}
+                    <div class="form-group" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+                        <div class="form-content mb-3" style="color: black">
+                            <input id="file-upload" type="file"  accept="image/*" style="display:none;" name="{{ form.image.name }}">
+                            <label for="file-upload" class="btn btn-secondary">
+                                Choose File
+                            </label>
+                            <div id="file-name">No file chosen</div>
+                        </div>
+                        <button type="submit" class="btn btn-dark" style="padding: 10px; font-size: 40px; width: 200px;">Classify</button>
                     </div>
-                    <button type="submit" class="btn btn-dark" style="padding: 10px; font-size: 40px; width: 200px;">Classify</button>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
     </main>
     <script type="module" src="{% static 'script.js' %}"></script>
 </body>

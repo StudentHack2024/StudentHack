@@ -73,6 +73,8 @@ controls.enableZoom = false; //Disable zoom
 function animate() {
   requestAnimationFrame(animate);
 
+  pulseBox();
+
   renderer.render(scene, camera);
 }
 
@@ -98,12 +100,8 @@ window.addEventListener('wheel', function(event) {
     var background = document.getElementById("background-img");
 
 
-    console.log("scale")
-    console.log(object.scale.x)
     if (object.scale.x - scaleChange < 0 && object.scale.y - scaleChange < 0 && object.scale.z - scaleChange < 0){
         object.scale.set(0,0,0);
-        console.log("opacity")
-        console.log(element.style.opacity)
         if ((parseFloat(element.style.opacity) + 0.01) < 1){
             element.style.opacity = parseFloat(element.style.opacity) + 0.02;
         } else {
@@ -118,7 +116,7 @@ window.addEventListener('wheel', function(event) {
         }
     } else if (object.scale.x - scaleChange > 150 && object.scale.y - scaleChange > 150 && object.scale.z - scaleChange > 150){
         object.scale.set(150,150,150);
-    } else if (object.scale.x >= 0 && object.scale.y >= 0 && object.scale.z >= 0){
+    } else if (object.scale.x > 0 && object.scale.y > 0 && object.scale.z > 0){
         object.scale.set(
             object.scale.x - scaleChange,
             object.scale.y - scaleChange,
@@ -146,5 +144,14 @@ document.onmousemove = (e) => {
   mouseY = e.clientY;
 }
 
+// Define the pulseBox function
+function pulseBox() {
+  const box = document.getElementById('form-total');
+  box.style.animation = 'pulse 2s infinite';
+}
+
 //Start the 3D rendering
 animate();
+
+// Call the pulseBox function when the window finishes loading
+window.onload = pulseBox;
