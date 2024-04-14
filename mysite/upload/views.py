@@ -16,4 +16,4 @@ def index(request):
             return HttpResponse("Form is not valid")
     else:
         form  = image_input_form()
-    return render(request, "upload/uploadfile.html", {"form": form})
+    return render(request, "upload/index.html", {"form": form})
