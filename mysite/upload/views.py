@@ -7,6 +7,7 @@ import base64
 def index(request):
     if request.method == "POST":
         form = image_input_form(request.POST, request.FILES)
+        print ("hello")
         if form.is_valid():
             prediction = classify_img(request.FILES['image'])
             img_str = base64.b64encode(request.FILES['image'].file.getvalue())
