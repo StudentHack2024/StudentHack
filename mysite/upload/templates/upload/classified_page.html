@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Classified Page</title>
+    </head>
+    <body>
+        <h1>Your galaxy was</h1>
+        {% if prediction == 0 %}
+            <h2>Elliptical</h2>
+        {% elif prediction == 1 %}
+            <h2>Barred Spiral</h2>
+        {% elif prediction == 2 %}
+            <h2>Spiral</h2>
+        {% else %}
+            <h2>Unknown</h2>
+        {% endif %}
+    </body>
+</html>
