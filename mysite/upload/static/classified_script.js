@@ -12,4 +12,8 @@ function pulseBox() {
     box.style.animation = 'pulse 2s infinite';
 }
 
+document.getElementById('file-upload').addEventListener('change', function() {
+    document.getElementById('file-name').textContent = this.files[0].name;
+});
+
 animate();
