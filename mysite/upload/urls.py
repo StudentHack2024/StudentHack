@@ -9,4 +9,5 @@ from django.views.static import serve
 
 urlpatterns = [path("", views.index, name = "index")]
 
+
 urlpatterns += staticfiles_urlpatterns()
